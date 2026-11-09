@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quotation | PERKS</title><link rel="stylesheet" href="style.css"></head><body>
+<header><div class="container nav">
+<a class="brand" href="index.html"><img src="assets/perks-logo.png" alt="PERKS Car Wash and Detailing LLC"></a>
+<button class="menu" onclick="navToggle()" aria-label="Open menu">☰</button>
+<nav class="navlinks"><a href="index.html">Home</a><a href="services.html">Explore Services / Book</a><a href="quotation.html">Prices & Quotation</a><a href="index.html#about">About Us</a><a href="index.html#contact">Contact</a></nav>
+<a class="btn" href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener">Chat on WhatsApp</a>
+</div></header>
+
+<section class="page-hero"><div class="container"><div class="eyebrow">Transparent Pricing</div><h1>Build Your <span class="gold">Quotation</span></h1><p>Select the services you need. Your quotation total updates automatically. You can print it or send the details to PERKS by email or WhatsApp.</p></div></section>
+<main class="section container"><form id="quoteForm"><div class="form-layout"><section class="panel"><h2>Customer & Vehicle Details</h2>
+<div class="field"><label for="qname">Full name *</label><input id="qname" name="name" required placeholder="Your full name"></div>
+<div class="field"><label for="qphone">Phone number *</label><input id="qphone" name="phone" required type="tel" placeholder="+971..."></div>
+<div class="field"><label for="qemail">Email address</label><input id="qemail" name="email" type="email" placeholder="you@example.com"></div>
+<div class="field"><label for="qvehicle">Vehicle make and model</label><input id="qvehicle" name="vehicle" placeholder="e.g. Mercedes-Benz GLE"></div>
+<div class="field"><label for="qnotes">Additional notes</label><textarea id="qnotes" name="notes" placeholder="Any special requirements?"></textarea></div>
+<h2 style="margin-top:25px">Select Services</h2><p class="hint">Sample prices below are placeholders. Update them to PERKS' approved prices in quotation.html.</p>
+<div class="price-list">
+<label class="price-item"><span><input type="checkbox" name="service" value="150" data-name="Exterior Detailing"> Exterior Detailing <small>Exterior wash and finish</small></span><b class="price">AED 150</b></label>
+<label class="price-item"><span><input type="checkbox" name="service" value="250" data-name="Interior Detailing"> Interior Detailing <small>Deep interior clean</small></span><b class="price">AED 250</b></label>
+<label class="price-item"><span><input type="checkbox" name="service" value="900" data-name="Ceramic Coating"> Ceramic Coating <small>Paint protection treatment</small></span><b class="price">AED 900</b></label>
+<label class="price-item"><span><input type="checkbox" name="service" value="300" data-name="Wax & Paint Protection"> Wax & Paint Protection <small>Gloss and surface protection</small></span><b class="price">AED 300</b></label>
+<label class="price-item"><span><input type="checkbox" name="service" value="180" data-name="Engine Bay Cleaning"> Engine Bay Cleaning <small>Careful engine compartment clean</small></span><b class="price">AED 180</b></label>
+<label class="price-item"><span><input type="checkbox" name="service" value="220" data-name="Headlight Restoration"> Headlight Restoration <small>Restore clarity and appearance</small></span><b class="price">AED 220</b></label>
+<label class="price-item"><span><input type="checkbox" name="service" value="280" data-name="Leather Care"> Leather Care <small>Clean and condition leather</small></span><b class="price">AED 280</b></label>
+<label class="price-item"><span><input type="checkbox" name="service" value="500" data-name="Fleet Vehicle Care"> Fleet Vehicle Care <small>Pricing subject to fleet size</small></span><b class="price">AED 500</b></label>
+</div></section>
+<aside class="panel"><h2>Your Quotation</h2><p class="hint">Selected services</p><div id="selectedServices"><p class="hint">No services selected yet.</p></div><div class="total-row"><span>Total</span><strong id="quoteTotal">AED 0</strong></div><p class="hint">This is an estimate based on the sample prices displayed. Final pricing may be confirmed by PERKS after reviewing your request.</p><div class="actions no-print" style="margin-top:20px"><button type="button" id="printQuote" class="btn secondary">Print / Save PDF</button><button type="button" id="sendQuoteEmail" class="btn">Send to PERKS Email</button><a href="#" id="quoteWhatsApp" class="btn dark" target="_blank" rel="noopener">Send to WhatsApp</a></div><div class="success" id="quoteStatus" role="status"></div></aside></div></form></main>
+<footer id="contact"><div class="container footer-row"><span>© 2026 PERKS Car Wash and Detailing L.L.C. All rights reserved.</span><span>Premium car care • Dubai, UAE</span><span>Replace the sample contact details before publishing.</span></div></footer>
+<script src="script.js"></script>
+</body></html>
