@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Book an Appointment | PERKS</title><link rel="stylesheet" href="style.css"></head><body>
+<header><div class="container nav">
+<a class="brand" href="index.html"><img src="assets/perks-logo.png" alt="PERKS Car Wash and Detailing LLC"></a>
+<button class="menu" onclick="navToggle()" aria-label="Open menu">☰</button>
+<nav class="navlinks"><a href="index.html">Home</a><a href="services.html">Explore Services / Book</a><a href="quotation.html">Prices & Quotation</a><a href="index.html#about">About Us</a><a href="index.html#contact">Contact</a></nav>
+<a class="btn" href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener">Chat on WhatsApp</a>
+</div></header>
+
+<section class="page-hero"><div class="container"><div class="eyebrow">PERKS Customer Booking</div><h1>Book an <span class="gold">Appointment</span></h1><p>Complete the form below and our team will contact you to confirm availability and your appointment details.</p></div></section>
+<main class="section container"><div class="form-layout"><form class="panel" id="bookingForm"><h2>Appointment Details</h2><div class="field-grid">
+<div class="field"><label for="name">Full name *</label><input id="name" name="name" required placeholder="Your full name"></div>
+<div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" required type="tel" placeholder="+971..."></div>
+<div class="field"><label for="email">Email address *</label><input id="email" name="email" required type="email" placeholder="you@example.com"></div>
+<div class="field"><label for="vehicle">Vehicle make and model *</label><input id="vehicle" name="vehicle" required placeholder="e.g. Porsche 911"></div>
+<div class="field"><label for="service">Service required *</label><select id="service" name="service" required><option value="">Choose a service</option><option>Exterior Detailing</option><option>Interior Detailing</option><option>Ceramic Coating</option><option>Wax & Paint Protection</option><option>Engine Bay Cleaning</option><option>Headlight Restoration</option><option>Leather Care</option><option>Fleet Vehicle Care</option><option>Multiple Services</option></select></div>
+<div class="field"><label for="date">Preferred date *</label><input id="date" name="date" type="date" required></div>
+<div class="field"><label for="time">Preferred time *</label><select id="time" name="time" required><option value="">Choose a time</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
+<div class="field full"><label for="message">Additional details</label><textarea id="message" name="message" placeholder="Tell us anything else we should know about your vehicle or requested service."></textarea></div>
+</div><div class="notice">Submitting this form sends an appointment request. Your appointment is not confirmed until PERKS contacts you.</div><button type="submit">Send Booking Request →</button><div class="success" id="bookingStatus" role="status"></div><a id="bookingWhatsApp" class="btn secondary" style="display:none;margin-top:12px" target="_blank" rel="noopener">Send booking through WhatsApp</a></form>
+<aside class="panel"><h2>What happens next?</h2><ul class="checks"><li>We receive your appointment request.</li><li>Our team checks the requested date and time.</li><li>We contact you to confirm your booking.</li></ul><p class="hint">For urgent enquiries, use the WhatsApp contact button at the top of this page.</p><br><a class="btn secondary" href="quotation.html">Need a price first? Get a quotation</a></aside></div></main>
+<footer id="contact"><div class="container footer-row"><span>© 2026 PERKS Car Wash and Detailing L.L.C. All rights reserved.</span><span>Premium car care • Dubai, UAE</span><span>Replace the sample contact details before publishing.</span></div></footer>
+<script src="script.js"></script>
+</body></html>
