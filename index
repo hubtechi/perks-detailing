@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PERKS Car Wash & Detailing L.L.C.</title><link rel="stylesheet" href="style.css"></head><body>
+<header><div class="container nav">
+<a class="brand" href="index.html"><img src="assets/perks-logo.png" alt="PERKS Car Wash and Detailing LLC"></a>
+<button class="menu" onclick="navToggle()" aria-label="Open menu">☰</button>
+<nav class="navlinks"><a href="index.html">Home</a><a href="services.html">Explore Services / Book</a><a href="quotation.html">Prices & Quotation</a><a href="index.html#about">About Us</a><a href="index.html#contact">Contact</a></nav>
+<a class="btn" href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener">Chat on WhatsApp</a>
+</div></header>
+
+<main>
+<section class="hero">
+<div class="hero-slides">
+<!-- Replace these five image paths with your own sports-car images. Keep the filenames or update the src paths. -->
+<div class="hero-slide active" style="background-image:url('images/sports-car-1.jpg')"></div>
+<div class="hero-slide" style="background-image:url('images/sports-car-2.jpg')"></div>
+<div class="hero-slide" style="background-image:url('images/sports-car-3.jpg')"></div>
+<div class="hero-slide" style="background-image:url('images/sports-car-4.jpg')"></div>
+<div class="hero-slide" style="background-image:url('images/sports-car-5.jpg')"></div>
+</div>
+<div class="hero-content"><div class="eyebrow">Premium Car Care in Dubai</div><h1>Drive Clean.<br>Drive Fresh.<br>Drive <span class="gold">PERKS.</span></h1><p>Professional detailing services that bring out the best in your vehicle.</p><a class="btn" href="services.html">Explore Our Services →</a></div>
+<div class="slide-dots"><button class="dot active" aria-label="Slide 1"></button><button class="dot" aria-label="Slide 2"></button><button class="dot" aria-label="Slide 3"></button><button class="dot" aria-label="Slide 4"></button><button class="dot" aria-label="Slide 5"></button></div>
+</section>
+<section class="section container"><h2 class="section-title">Our <span>Services</span></h2><div class="service-grid">
+<article class="service-card"><img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=700&q=80" alt="Exterior detailing"><div><h3>Exterior Detailing</h3><a href="services.html">Explore Service →</a></div></article>
+<article class="service-card"><img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=700&q=80" alt="Interior detailing"><div><h3>Interior Detailing</h3><a href="services.html">Explore Service →</a></div></article>
+<article class="service-card"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=700&q=80" alt="Ceramic coating"><div><h3>Ceramic Coating</h3><a href="services.html">Explore Service →</a></div></article>
+<article class="service-card"><img src="https://images.unsplash.com/photo-1613214150384-9b6c7b4b8d8a?auto=format&fit=crop&w=700&q=80" alt="Paint protection"><div><h3>Wax & Paint Protection</h3><a href="services.html">Explore Service →</a></div></article>
+<article class="service-card"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=700&q=80" alt="Engine bay"><div><h3>Engine Bay Cleaning</h3><a href="services.html">Explore Service →</a></div></article>
+<article class="service-card"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=80" alt="Headlight restoration"><div><h3>Headlight Restoration</h3><a href="services.html">Explore Service →</a></div></article>
+<article class="service-card"><img src="https://images.unsplash.com/photo-1600705722908-bab2a6f8a2a8?auto=format&fit=crop&w=700&q=80" alt="Leather care"><div><h3>Leather Care</h3><a href="services.html">Explore Service →</a></div></article>
+<article class="service-card"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=80" alt="Fleet vehicles"><div><h3>Fleet Vehicle Care</h3><a href="services.html">Explore Service →</a></div></article>
+</div></section>
+<section class="section"><div class="container about-grid" id="about"><div class="about-panel"><h2>About <span class="gold">PERKS</span></h2><p>We are a premium car care and detailing company committed to delivering exceptional results with professional care, premium products and attention to detail.</p><br><a class="btn secondary" href="services.html">Book a Service →</a></div><div><h2>Why <span class="gold">Choose Us?</span></h2><ul class="checks"><li>Professional & Experienced Team</li><li>Premium Quality Products</li><li>Attention to Detail</li><li>Convenient & Reliable Service</li><li>Customer Satisfaction Guaranteed</li></ul></div></div></section>
+<section class="section container"><div class="cta"><div><h3>Request a Quotation or Book an Appointment</h3><p>Let us take care of your car.</p></div><div class="actions"><a class="btn" href="quotation.html">Get a Quotation</a><a class="btn secondary" href="services.html">Book Appointment</a></div></div></section>
+</main>
+<footer id="contact"><div class="container footer-row"><span>© 2026 PERKS Car Wash and Detailing L.L.C. All rights reserved.</span><span>Premium car care • Dubai, UAE</span><span>Replace the sample contact details before publishing.</span></div></footer>
+<script src="script.js"></script>
+</body></html>
