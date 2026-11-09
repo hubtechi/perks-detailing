@@ -1,0 +1,40 @@
+PERKS WEBSITE PACKAGE
+
+FILES
+- index.html: Home page with five-slide hero carousel.
+- services.html: Appointment booking form.
+- quotation.html: Select services, calculate total, print/save PDF, send quotation.
+- style.css: Shared responsive black-and-gold styling.
+- script.js: Carousel, form logic, EmailJS and WhatsApp settings.
+- assets/perks-logo.png: Uploaded PERKS logo.
+
+ADD YOUR FIVE SLIDER IMAGES
+Create an "images" folder beside index.html and add:
+sports-car-1.jpg
+sports-car-2.jpg
+sports-car-3.jpg
+sports-car-4.jpg
+sports-car-5.jpg
+The slider already points to these names.
+
+IMPORTANT SETUP BEFORE GOING LIVE
+1. Open script.js and replace:
+   companyEmail with the actual company email.
+   whatsappNumber with the business WhatsApp number including country code, digits only.
+2. Email delivery needs EmailJS configuration:
+   - Create an EmailJS account at https://www.emailjs.com/
+   - Add an email service connected to your company mailbox.
+   - Create two templates: one for appointment requests and one for quotation requests.
+   - Add the Public Key, Service ID, Booking Template ID and Quotation Template ID in script.js.
+   - In each template, use the variables: {{to_email}}, {{reference}}, {{name}}, {{phone}}, {{email}}, {{vehicle}}, {{service}}, {{date}}, {{time}}, {{services}}, {{total}}, {{message}}, {{notes}}.
+   The template can include the variables relevant to that form. Set the recipient to the dynamic {{to_email}} field.
+3. Replace the sample quotation prices in quotation.html with approved PERKS prices (AED is currently used as the display currency).
+4. Replace the sample WhatsApp link in the header (971XXXXXXXXX) in all three HTML files with the real WhatsApp number.
+5. Upload the full folder to your hosting provider / GitHub Pages.
+
+NOTES
+- The booking form is a request, not a confirmed appointment. PERKS must confirm availability.
+- EmailJS is a third-party email service. Configure and test it before publishing.
+- The quotation form opens WhatsApp with a prepared message; the customer must press Send in WhatsApp.
+- This starter is a front-end website. It does not yet include a secure admin dashboard or a database of bookings.
+- The provided image reference is used for the logo. Hero sports-car images are intentionally left as replaceable image slots.
