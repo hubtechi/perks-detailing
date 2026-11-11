@@ -24,3 +24,38 @@ footer{border-top:1px solid #30291e;padding:28px 0;color:#aaa;font-size:13px}.fo
 @media(max-width:850px){.navlinks{display:none;position:absolute;top:81px;left:0;right:0;background:#080808;padding:20px;flex-direction:column;align-items:flex-start;border-bottom:1px solid #333}.navlinks.open{display:flex}.menu{display:block}.service-grid{grid-template-columns:repeat(2,1fr)}.form-layout,.about-grid{grid-template-columns:1fr}}
 @media(max-width:520px){.hero{min-height:480px}.hero-content{padding:55px 0}.service-grid{grid-template-columns:1fr 1fr;gap:9px}.service-card img{height:110px}.service-card div{padding:10px}.service-card h3{font-size:13px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.panel{padding:17px}.cta{align-items:flex-start;flex-direction:column}.brand img{width:125px}}
 @media print{header,footer,.no-print,.page-hero{display:none!important}body{background:white;color:black}.panel{background:white;color:black;border:1px solid #aaa}.price-item small{color:#444}label{color:black}}
+
+
+/* Floating WhatsApp Icon */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 18px;
+    }
+}
+
