@@ -7,7 +7,24 @@
 </div></header>
 
 <section class="page-hero"><div class="container"><div class="eyebrow">Transparent Pricing</div><h1>Build Your <span class="gold">Quotation</span></h1><p>Select the services you need. Your quotation total updates automatically. You can print it or send the details to PERKS by email or WhatsApp.</p></div></section>
-<main class="section container"><form id="quoteForm"><div class="form-layout"><section class="panel"><h2>Customer & Vehicle Details</h2>
+<main class="section container"><form id="quoteForm"
+      action="https://formsubmit.co/YOUR_COMPANY_EMAIL"
+      method="POST">
+
+    <input type="hidden" name="_subject"
+           value="New PERKS Quotation Request">
+
+    <input type="hidden" name="_template"
+           value="table">
+
+    <input type="hidden" name="_captcha"
+           value="true">
+
+    <input type="hidden" name="Selected Services"
+           id="emailServices">
+
+    <input type="hidden" name="Quotation Total"
+           id="emailTotal"><div class="form-layout"><section class="panel"><h2>Customer & Vehicle Details</h2>
 <div class="field"><label for="qname">Full name *</label><input id="qname" name="name" required placeholder="Your full name"></div>
 <div class="field"><label for="qphone">Phone number *</label><input id="qphone" name="phone" required type="tel" placeholder="+971..."></div>
 <div class="field"><label for="qemail">Email address</label><input id="qemail" name="email" type="email" placeholder="you@example.com"></div>
