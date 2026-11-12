@@ -25,6 +25,15 @@ footer{border-top:1px solid #30291e;padding:28px 0;color:#aaa;font-size:13px}.fo
 @media(max-width:520px){.hero{min-height:480px}.hero-content{padding:55px 0}.service-grid{grid-template-columns:1fr 1fr;gap:9px}.service-card img{height:110px}.service-card div{padding:10px}.service-card h3{font-size:13px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.panel{padding:17px}.cta{align-items:flex-start;flex-direction:column}.brand img{width:125px}}
 @media print{header,footer,.no-print,.page-hero{display:none!important}body{background:white;color:black}.panel{background:white;color:black;border:1px solid #aaa}.price-item small{color:#444}label{color:black}}
 
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.whatsapp-btn i {
+    font-size: 22px;
+}
 
 /* Floating WhatsApp Icon */
 .whatsapp-float {
