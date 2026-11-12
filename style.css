@@ -84,16 +84,18 @@ button:hover,
    4. WHATSAPP BUTTON
 ========================================= */
 
-/* WhatsApp button with text */
+/* WhatsApp Button */
 
 .whatsapp-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
 .whatsapp-btn i {
-    font-size: 22px;
+    font-size: 24px;
+    color: #128C7E;
 }
 
 /* Floating WhatsApp icon */
