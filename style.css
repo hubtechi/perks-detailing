@@ -741,9 +741,8 @@ textarea:focus {
 
 
 
-/* =================================
-   WATER RIPPLE SERVICE IMAGE EFFECT
-================================= */
+
+/* WATER RIPPLE SERVICE IMAGE EFFECT */
 
 .service-card {
     overflow: hidden;
@@ -755,18 +754,14 @@ textarea:focus {
     height: 100%;
     object-fit: cover;
     display: block;
-
-    transform-origin: center;
     animation: waterRipple 4s ease-in-out infinite;
-
     transition: transform 0.4s ease;
 }
 
-/* Automatic water-like movement */
+/* Automatic movement */
 @keyframes waterRipple {
     0%, 100% {
-        transform: scale(1) skew(0deg, 0deg);
-        filter: brightness(1);
+        transform: scale(1);
     }
 
     25% {
@@ -775,22 +770,21 @@ textarea:focus {
 
     50% {
         transform: scale(1.02) skew(-1deg, 1deg);
-        filter: brightness(1.08);
     }
 
     75% {
-        transform: scale(1.05) skew(1deg, 1deg);
+        transform: scale(1.04) skew(1deg, 1deg);
     }
 }
 
-/* Stronger effect when mouse moves over image */
+/* Stronger movement on hover */
 .service-card:hover img {
     animation: hoverRipple 1.5s ease-in-out infinite;
 }
 
 @keyframes hoverRipple {
     0%, 100% {
-        transform: scale(1.04) skew(0deg, 0deg);
+        transform: scale(1.04);
     }
 
     25% {
@@ -806,3 +800,8 @@ textarea:focus {
     }
 }
 
+/* KEEP SERVICE TEXT VISIBLE */
+.service-card div {
+    position: relative;
+    z-index: 5;
+}
