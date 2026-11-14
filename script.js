@@ -56,37 +56,111 @@ function initBooking(){
     }catch(err){status.style.display="block";status.textContent="Email could not be sent. Please use the WhatsApp option.";const wa=document.querySelector("#bookingWhatsApp");wa.href=whatsappLink(msg);wa.style.display="inline-block"}
   });
 }
+
 function initQuotation(){
-  const form=document.querySelector("#quoteForm");if(!form)return;
-  const totalEl=document.querySelector("#quoteTotal"),selectedEl=document.querySelector("#selectedServices");
+
+  const form = document.querySelector("#quoteForm");
+  if(!form) return;
+
+  const totalEl = document.querySelector("#quoteTotal");
+  const selectedEl = document.querySelector("#selectedServices");
+  const emailServices = document.querySelector("#emailServices");
+  const emailTotal = document.querySelector("#emailTotal");
+
   function selected(){
-    return [...form.querySelectorAll('input[name="service"]:checked')].map(x=>({name:x.dataset.name,price:Number(x.value)}));
+    return [...form.querySelectorAll('input[name="service"]:checked')]
+      .map(x => ({
+        name: x.dataset.name,
+        price: Number(x.value)
+      }));
   }
+
   function update(){
-    const items=selected(),total=items.reduce((s,x)=>s+x.price,0);
-    totalEl.textContent="AED "+money(total);
-    selectedEl.innerHTML=items.length?items.map(x=>`<div class="price-item"><span>${x.name}</span><b class="price">AED ${money(x.price)}</b></div>`).join(""):"<p class='hint'>No services selected yet.</p>";
+
+    const items = selected();
+    const total = items.reduce((s,x) => s + x.price, 0);
+
+    totalEl.textContent = "AED " + money(total);
+
+    selectedEl.innerHTML = items.length
+      ? items.map(x =>
+          `<div class="price-item">
+             <span>${x.name}</span>
+             <b class="price">AED ${money(x.price)}</b>
+           </div>`
+        ).join("")
+      : "<p class='hint'>No services selected yet.</p>";
+
+    // Populate hidden fields for FormSubmit
+    emailServices.value = items.length
+      ? items.map(x => `${x.name} - AED ${money(x.price)}`).join("\n")
+      : "No services selected";
+
+    emailTotal.value = "AED " + money(total);
   }
-  form.querySelectorAll('input[name="service"]').forEach(x=>x.addEventListener("change",update));update();
-  document.querySelector("#printQuote").addEventListener("click",()=>window.print());
-  document.querySelector("#sendQuoteEmail").addEventListener("click",async()=>{
-    const d=Object.fromEntries(new FormData(form).entries()),items=selected(),total=items.reduce((s,x)=>s+x.price,0);
-    if(!d.name||!d.phone||!items.length){alert("Please enter your name, phone number and select at least one service.");return}
-    const ref="QT-"+Date.now().toString().slice(-8);
-    const lines=items.map(x=>`${x.name}: AED ${money(x.price)}`).join("\n");
-    const msg=`PERKS QUOTATION REQUEST\nReference: ${ref}\nCustomer: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email||"N/A"}\nVehicle: ${d.vehicle||"N/A"}\nServices:\n${lines}\nTOTAL: AED ${money(total)}\nNotes: ${d.notes||"N/A"}`;
-    try{
-      const sent=await sendPerksEmail(PERKS_CONFIG.quotationTemplateId,{...d,reference:ref,services:lines,total:`AED ${money(total)}`,request_type:"Quotation",message:msg});
-      const status=document.querySelector("#quoteStatus");status.style.display="block";
-      status.textContent=sent?`Quotation ${ref} has been emailed to PERKS.`:"Email sending is not configured yet. Use the WhatsApp button to send this quotation.";
-      const wa=document.querySelector("#quoteWhatsApp");wa.href=whatsappLink(msg);wa.style.display="inline-block";
-    }catch(e){alert("Email could not be sent. Please use WhatsApp.");}
+
+  // Update quotation whenever a service is selected
+  form.querySelectorAll('input[name="service"]').forEach(x => {
+    x.addEventListener("change", update);
   });
-  document.querySelector("#quoteWhatsApp").addEventListener("click",e=>{
-    const d=Object.fromEntries(new FormData(form).entries()),items=selected(),total=items.reduce((s,x)=>s+x.price,0);
-    if(!d.name||!d.phone||!items.length){e.preventDefault();alert("Please enter your name, phone number and select at least one service.");return}
-    const lines=items.map(x=>`${x.name}: AED ${money(x.price)}`).join("\n");
-    e.currentTarget.href=whatsappLink(`PERKS QUOTATION\nCustomer: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email||"N/A"}\nVehicle: ${d.vehicle||"N/A"}\n${lines}\nTOTAL: AED ${money(total)}\nNotes: ${d.notes||"N/A"}`);
+
+  update();
+
+  // Print quotation
+  document.querySelector("#printQuote").addEventListener("click", () => {
+    window.print();
   });
+
+  // Submit quotation through FormSubmit
+  form.addEventListener("submit", function(e){
+
+    update();
+
+    const items = selected();
+
+    if(!items.length){
+      e.preventDefault();
+      alert("Please select at least one service.");
+      return;
+    }
+
+    // FormSubmit will now receive all customer details,
+    // selected service names and the quotation total.
+
+  });
+
+  // WhatsApp quotation
+  document.querySelector("#quoteWhatsApp").addEventListener("click", function(e){
+
+    const d = Object.fromEntries(new FormData(form).entries());
+    const items = selected();
+
+    if(!d.name || !d.phone || !items.length){
+      e.preventDefault();
+      alert("Please enter your name, phone number and select at least one service.");
+      return;
+    }
+
+    const total = items.reduce((s,x) => s + x.price, 0);
+
+    const lines = items.map(x =>
+      `${x.name}: AED ${money(x.price)}`
+    ).join("\n");
+
+    const msg =
+      `PERKS QUOTATION REQUEST\n` +
+      `Customer: ${d.name}\n` +
+      `Phone: ${d.phone}\n` +
+      `Email: ${d.email || "N/A"}\n` +
+      `Vehicle: ${d.vehicle || "N/A"}\n` +
+      `Services:\n${lines}\n` +
+      `TOTAL: AED ${money(total)}\n` +
+      `Notes: ${d.notes || "N/A"}`;
+
+    this.href = whatsappLink(msg);
+
+  });
+
 }
+
 document.addEventListener("DOMContentLoaded",()=>{initSlides();initBooking();initQuotation()});
