@@ -40,22 +40,56 @@ function initSlides(){
   dots.forEach((d,k)=>d.addEventListener("click",()=>show(k)));
   setInterval(()=>show((i+1)%slides.length),4500);
 }
+
 function initBooking(){
-  const form=document.querySelector("#bookingForm");if(!form)return;
-  form.addEventListener("submit",async e=>{
-    e.preventDefault();const d=Object.fromEntries(new FormData(form).entries());
-    const ref="PK-"+Date.now().toString().slice(-8);
-    const msg=`PERKS APPOINTMENT REQUEST\nReference: ${ref}\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nVehicle: ${d.vehicle}\nService: ${d.service}\nPreferred date: ${d.date}\nPreferred time: ${d.time}\nMessage: ${d.message||"N/A"}`;
-    const status=document.querySelector("#bookingStatus");
-    try{
-      const sent=await sendPerksEmail(PERKS_CONFIG.bookingTemplateId,{...d,reference:ref,request_type:"Appointment booking",message:msg});
-      status.style.display="block";
-      status.textContent=sent?`Thank you. Your request (${ref}) has been emailed to PERKS.`:`Your request is ready (${ref}). Email delivery is not configured yet. You can send it through WhatsApp below.`;
-      const wa=document.querySelector("#bookingWhatsApp");wa.href=whatsappLink(msg);wa.style.display="inline-block";
-      form.reset();
-    }catch(err){status.style.display="block";status.textContent="Email could not be sent. Please use the WhatsApp option.";const wa=document.querySelector("#bookingWhatsApp");wa.href=whatsappLink(msg);wa.style.display="inline-block"}
+
+  const form = document.querySelector("#bookingForm");
+  if(!form) return;
+
+  const whatsappBtn = document.querySelector("#bookingWhatsApp");
+
+  // WhatsApp booking option
+  whatsappBtn.addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    const d = Object.fromEntries(
+      new FormData(form).entries()
+    );
+
+    if(!form.reportValidity()){
+      return;
+    }
+
+    const ref = "PK-" + Date.now().toString().slice(-8);
+
+    const message =
+      `PERKS APPOINTMENT REQUEST\n` +
+      `Reference: ${ref}\n` +
+      `Name: ${d.name}\n` +
+      `Phone: ${d.phone}\n` +
+      `Email: ${d.email}\n` +
+      `Vehicle: ${d.vehicle}\n` +
+      `Service: ${d.service}\n` +
+      `Preferred date: ${d.date}\n` +
+      `Preferred time: ${d.time}\n` +
+      `Message: ${d.message || "N/A"}`;
+
+    if(PERKS_CONFIG.whatsappNumber.includes("X")){
+      alert("Please configure the PERKS WhatsApp number first.");
+      return;
+    }
+
+    window.open(
+      whatsappLink(message),
+      "_blank",
+      "noopener"
+    );
+
   });
+
 }
+
 
 
 function initQuotation(){
