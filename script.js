@@ -57,6 +57,7 @@ function initBooking(){
   });
 }
 
+
 function initQuotation(){
 
   const form = document.querySelector("#quoteForm");
@@ -64,44 +65,52 @@ function initQuotation(){
 
   const totalEl = document.querySelector("#quoteTotal");
   const selectedEl = document.querySelector("#selectedServices");
+
   const emailServices = document.querySelector("#emailServices");
   const emailTotal = document.querySelector("#emailTotal");
 
   function selected(){
+
     return [...form.querySelectorAll('input[name="service"]:checked')]
       .map(x => ({
         name: x.dataset.name,
         price: Number(x.value)
       }));
+
   }
 
   function update(){
 
     const items = selected();
-    const total = items.reduce((s,x) => s + x.price, 0);
 
+    const total = items.reduce((sum, item) =>
+      sum + item.price, 0
+    );
+
+    // Update quotation display
     totalEl.textContent = "AED " + money(total);
 
     selectedEl.innerHTML = items.length
-      ? items.map(x =>
-          `<div class="price-item">
-             <span>${x.name}</span>
-             <b class="price">AED ${money(x.price)}</b>
-           </div>`
-        ).join("")
+      ? items.map(item => `
+          <div class="price-item">
+            <span>${item.name}</span>
+            <b class="price">AED ${money(item.price)}</b>
+          </div>
+        `).join("")
       : "<p class='hint'>No services selected yet.</p>";
 
-    // Populate hidden fields for FormSubmit
-    emailServices.value = items.length
-      ? items.map(x => `${x.name} - AED ${money(x.price)}`).join("\n")
-      : "No services selected";
+    // IMPORTANT: Populate email fields
+    emailServices.value = items.map(item =>
+      `${item.name} - AED ${money(item.price)}`
+    ).join("\n");
 
     emailTotal.value = "AED " + money(total);
+
   }
 
-  // Update quotation whenever a service is selected
-  form.querySelectorAll('input[name="service"]').forEach(x => {
-    x.addEventListener("change", update);
+  // Update when client selects services
+  form.querySelectorAll('input[name="service"]').forEach(input => {
+    input.addEventListener("change", update);
   });
 
   update();
@@ -111,21 +120,26 @@ function initQuotation(){
     window.print();
   });
 
-  // Submit quotation through FormSubmit
+  // FormSubmit email
   form.addEventListener("submit", function(e){
+
+    e.preventDefault();
 
     update();
 
     const items = selected();
 
     if(!items.length){
-      e.preventDefault();
       alert("Please select at least one service.");
       return;
     }
 
-    // FormSubmit will now receive all customer details,
-    // selected service names and the quotation total.
+    if(!form.reportValidity()){
+      return;
+    }
+
+    // Submit only AFTER hidden fields have been populated
+    HTMLFormElement.prototype.submit.call(form);
 
   });
 
@@ -141,26 +155,29 @@ function initQuotation(){
       return;
     }
 
-    const total = items.reduce((s,x) => s + x.price, 0);
+    const total = items.reduce((sum, item) =>
+      sum + item.price, 0
+    );
 
-    const lines = items.map(x =>
-      `${x.name}: AED ${money(x.price)}`
+    const lines = items.map(item =>
+      `${item.name}: AED ${money(item.price)}`
     ).join("\n");
 
-    const msg =
+    const message =
       `PERKS QUOTATION REQUEST\n` +
       `Customer: ${d.name}\n` +
       `Phone: ${d.phone}\n` +
       `Email: ${d.email || "N/A"}\n` +
       `Vehicle: ${d.vehicle || "N/A"}\n` +
-      `Services:\n${lines}\n` +
+      `Selected Services:\n${lines}\n` +
       `TOTAL: AED ${money(total)}\n` +
       `Notes: ${d.notes || "N/A"}`;
 
-    this.href = whatsappLink(msg);
+    this.href = whatsappLink(message);
 
   });
 
 }
+
 
 document.addEventListener("DOMContentLoaded",()=>{initSlides();initBooking();initQuotation()});
