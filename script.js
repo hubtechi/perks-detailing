@@ -41,6 +41,7 @@ function initSlides(){
   setInterval(()=>show((i+1)%slides.length),4500);
 }
 
+
 function initBooking(){
 
   const form = document.querySelector("#bookingForm");
@@ -48,7 +49,7 @@ function initBooking(){
 
   const whatsappBtn = document.querySelector("#bookingWhatsApp");
 
-  // WhatsApp booking option
+  // WhatsApp booking
   whatsappBtn.addEventListener("click", function(e){
 
     e.preventDefault();
@@ -57,13 +58,11 @@ function initBooking(){
       new FormData(form).entries()
     );
 
-    if(!form.reportValidity()){
-      return;
-    }
+    if(!form.reportValidity()) return;
 
     const ref = "PK-" + Date.now().toString().slice(-8);
 
-    const message =
+    const msg =
       `PERKS APPOINTMENT REQUEST\n` +
       `Reference: ${ref}\n` +
       `Name: ${d.name}\n` +
@@ -75,20 +74,12 @@ function initBooking(){
       `Preferred time: ${d.time}\n` +
       `Message: ${d.message || "N/A"}`;
 
-    if(PERKS_CONFIG.whatsappNumber.includes("X")){
-      alert("Please configure the PERKS WhatsApp number first.");
-      return;
-    }
-
-    window.open(
-      whatsappLink(message),
-      "_blank",
-      "noopener"
-    );
+    openWhatsApp(msg);
 
   });
 
 }
+
 
 
 
