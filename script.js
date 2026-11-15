@@ -1,238 +1,258 @@
 
-/* ================= PERKS WEBSITE SETTINGS =================
-   1) Add your real company email below.
-   2) Add your WhatsApp number in international format, digits only.
-   3) For automatic email delivery, create an EmailJS account and
-      enter your public key, service ID and template IDs below.
-   EmailJS setup: https://www.emailjs.com/
-============================================================= */
+/* ================= PERKS WEBSITE SETTINGS ================= */
+
 const PERKS_CONFIG = {
-  companyEmail: "YOUR_COMPANY_EMAIL@example.com",
-  whatsappNumber: "256781519693", // e.g. 971501234567; no + or spaces
-  emailJsPublicKey: "YOUR_EMAILJS_PUBLIC_KEY",
-  emailJsServiceId: "YOUR_EMAILJS_SERVICE_ID",
-  bookingTemplateId: "YOUR_BOOKING_TEMPLATE_ID",
-  quotationTemplateId: "YOUR_QUOTATION_TEMPLATE_ID"
+    companyEmail: "YOUR_COMPANY_EMAIL@example.com",
+    whatsappNumber: "256781519693",
+
+    emailJsPublicKey: "YOUR_EMAILJS_PUBLIC_KEY",
+    emailJsServiceId: "YOUR_EMAILJS_SERVICE_ID",
+    bookingTemplateId: "YOUR_BOOKING_TEMPLATE_ID",
+    quotationTemplateId: "YOUR_QUOTATION_TEMPLATE_ID"
 };
 
-function navToggle(){document.querySelector(".navlinks")?.classList.toggle("open")}
-function money(n){return new Intl.NumberFormat("en-US").format(n)}
-function emailConfigured(){return window.emailjs && !PERKS_CONFIG.emailJsPublicKey.startsWith("YOUR_")}
-async function sendPerksEmail(templateId, data){
-  if(emailConfigured() && !templateId.startsWith("YOUR_")){
-    await emailjs.send(PERKS_CONFIG.emailJsServiceId, templateId, {...data,to_email:PERKS_CONFIG.companyEmail});
-    return true;
-  }
-  return false;
-}
-function whatsappLink(message){
-  const number=PERKS_CONFIG.whatsappNumber.replace(/\D/g,"");
-  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-}
-function openWhatsApp(message){
-  if(PERKS_CONFIG.whatsappNumber.includes("X") || !PERKS_CONFIG.whatsappNumber){alert("Please add your PERKS WhatsApp number in script.js first.");return}
-  window.open(whatsappLink(message),"_blank","noopener");
-}
-function initSlides(){
-  const slides=[...document.querySelectorAll(".hero-slide")], dots=[...document.querySelectorAll(".dot")];
-  if(!slides.length)return;let i=0;
-  function show(n){slides.forEach((s,k)=>s.classList.toggle("active",k===n));dots.forEach((d,k)=>d.classList.toggle("active",k===n));i=n}
-  dots.forEach((d,k)=>d.addEventListener("click",()=>show(k)));
-  setInterval(()=>show((i+1)%slides.length),4500);
+/* ================= GENERAL FUNCTIONS ================= */
+
+function navToggle() {
+    document.querySelector(".navlinks")?.classList.toggle("open");
 }
 
+function money(n) {
+    return new Intl.NumberFormat("en-US").format(n);
+}
 
-function initBooking(){
+function whatsappLink(message) {
+    const number = PERKS_CONFIG.whatsappNumber.replace(/\D/g, "");
+    return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
 
-  const form = document.querySelector("#bookingForm");
-  if(!form) return;
+function openWhatsApp(message) {
+    const number = PERKS_CONFIG.whatsappNumber;
 
-  const whatsappBtn = document.querySelector("#bookingWhatsApp");
+    if (!number || number.includes("X")) {
+        alert("Please add the PERKS WhatsApp number in script.js.");
+        return;
+    }
 
-  // WhatsApp booking
-  whatsappBtn.addEventListener("click", function(e){
+    window.open(whatsappLink(message), "_blank", "noopener");
+}
 
-    e.preventDefault();
+/* ================= HOMEPAGE SLIDESHOW ================= */
 
-    const d = Object.fromEntries(
-      new FormData(form).entries()
+function initSlides() {
+    const slides = [...document.querySelectorAll(".hero-slide")];
+    const dots = [...document.querySelectorAll(".dot")];
+
+    if (!slides.length) return;
+
+    let i = 0;
+
+    function show(n) {
+        slides.forEach((s, k) =>
+            s.classList.toggle("active", k === n)
+        );
+
+        dots.forEach((d, k) =>
+            d.classList.toggle("active", k === n)
+        );
+
+        i = n;
+    }
+
+    dots.forEach((d, k) =>
+        d.addEventListener("click", () => show(k))
     );
 
-    if(!form.reportValidity()) return;
-
-    const ref = "PK-" + Date.now().toString().slice(-8);
-
-    const msg =
-      `PERKS APPOINTMENT REQUEST\n` +
-      `Reference: ${ref}\n` +
-      `Name: ${d.name}\n` +
-      `Phone: ${d.phone}\n` +
-      `Email: ${d.email}\n` +
-      `Vehicle: ${d.vehicle}\n` +
-      `Service: ${d.service}\n` +
-      `Preferred date: ${d.date}\n` +
-      `Preferred time: ${d.time}\n` +
-      `Message: ${d.message || "N/A"}`;
-
-    openWhatsApp(msg);
-
-  });
-
+    setInterval(() => {
+        show((i + 1) % slides.length);
+    }, 4500);
 }
 
+/* ================= BOOKING FORM ================= */
 
+function initBooking() {
+    const form = document.querySelector("#bookingForm");
 
+    if (!form) return;
 
-function initQuotation(){
+    const whatsappBtn =
+        document.querySelector("#bookingWhatsApp") ||
+        document.querySelector("#sendBookingWhatsApp");
 
-  const form = document.querySelector("#quoteForm");
-  if(!form) return;
+    if (!whatsappBtn) return;
 
-  const totalEl = document.querySelector("#quoteTotal");
-  const selectedEl = document.querySelector("#selectedServices");
+    whatsappBtn.addEventListener("click", function(e) {
+        e.preventDefault();
 
-  const emailServices = document.querySelector("#emailServices");
-  const emailTotal = document.querySelector("#emailTotal");
+        if (!form.reportValidity()) return;
 
-  function selected(){
+        const d = Object.fromEntries(
+            new FormData(form).entries()
+        );
 
-    return [...form.querySelectorAll('input[name="service"]:checked')]
-      .map(x => ({
-        name: x.dataset.name,
-        price: Number(x.value)
-      }));
+        const ref = "PK-" + Date.now().toString().slice(-8);
 
-  }
+        const message =
+`*PERKS CAR WASH & DETAILING*
+*NEW APPOINTMENT BOOKING REQUEST*
 
-  function update(){
+Reference: ${ref}
 
-    const items = selected();
+*Customer Details*
+Name: ${d.name}
+Phone: ${d.phone}
+Email: ${d.email}
+Vehicle: ${d.vehicle}
 
-    const total = items.reduce((sum, item) =>
-      sum + item.price, 0
-    );
+*Appointment Details*
+Service: ${d.service}
+Preferred Date: ${d.date}
+Preferred Time: ${d.time}
 
-    // Update quotation display
-    totalEl.textContent = "AED " + money(total);
+Additional Details: ${d.message || "N/A"}
 
-    selectedEl.innerHTML = items.length
-      ? items.map(item => `
-          <div class="price-item">
-            <span>${item.name}</span>
-            <b class="price">AED ${money(item.price)}</b>
-          </div>
-        `).join("")
-      : "<p class='hint'>No services selected yet.</p>";
+Thank you for choosing PERKS!
+Drive Clean. Drive Fresh. Drive PERKS.`;
 
-    // IMPORTANT: Populate email fields
-    emailServices.value = items.map(item =>
-      `${item.name} - AED ${money(item.price)}`
-    ).join("\n");
+        openWhatsApp(message);
+    });
+}
 
-    emailTotal.value = "AED " + money(total);
+/* ================= QUOTATION FORM ================= */
 
-  }
+function initQuotation() {
+    const form = document.querySelector("#quoteForm");
 
-  // Update when client selects services
-  form.querySelectorAll('input[name="service"]').forEach(input => {
-    input.addEventListener("change", update);
-  });
+    if (!form) return;
 
-  update();
+    const totalEl = document.querySelector("#quoteTotal");
+    const selectedEl = document.querySelector("#selectedServices");
 
-  // Print quotation
-  document.querySelector("#printQuote").addEventListener("click", () => {
-    window.print();
-  });
+    const emailServices = document.querySelector("#emailServices");
+    const emailTotal = document.querySelector("#emailTotal");
 
-  // FormSubmit email
-  form.addEventListener("submit", function(e){
+    function selected() {
+        return [...form.querySelectorAll(
+            'input[name="service"]:checked'
+        )].map(x => ({
+            name: x.dataset.name,
+            price: Number(x.value)
+        }));
+    }
 
-    e.preventDefault();
+    function update() {
+        const items = selected();
+
+        const total = items.reduce(
+            (sum, item) => sum + item.price, 0
+        );
+
+        totalEl.textContent = "AED " + money(total);
+
+        selectedEl.innerHTML = items.length
+            ? items.map(item => `
+                <div class="price-item">
+                    <span>${item.name}</span>
+                    <b class="price">AED ${money(item.price)}</b>
+                </div>
+            `).join("")
+            : "<p class='hint'>No services selected yet.</p>";
+
+        emailServices.value = items.map(item =>
+            `${item.name} - AED ${money(item.price)}`
+        ).join("\n");
+
+        emailTotal.value = "AED " + money(total);
+    }
+
+    /* Update quotation when services are selected */
+
+    form.querySelectorAll('input[name="service"]').forEach(input => {
+        input.addEventListener("change", update);
+    });
 
     update();
 
-    const items = selected();
+    /* Print / Save PDF */
 
-    if(!items.length){
-      alert("Please select at least one service.");
-      return;
-    }
-
-    if(!form.reportValidity()){
-      return;
-    }
-
-    // Submit only AFTER hidden fields have been populated
-    HTMLFormElement.prototype.submit.call(form);
-
-  });
-
-  // WhatsApp quotation
-  document.querySelector("#quoteWhatsApp").addEventListener("click", function(e){
-
-    const d = Object.fromEntries(new FormData(form).entries());
-    const items = selected();
-
-    if(!d.name || !d.phone || !items.length){
-      e.preventDefault();
-      alert("Please enter your name, phone number and select at least one service.");
-      return;
-    }
-
-    const total = items.reduce((sum, item) =>
-      sum + item.price, 0
-    );
-
-    const lines = items.map(item =>
-      `${item.name}: AED ${money(item.price)}`
-    ).join("\n");
-
-    const message =
-      `PERKS QUOTATION REQUEST\n` +
-      `Customer: ${d.name}\n` +
-      `Phone: ${d.phone}\n` +
-      `Email: ${d.email || "N/A"}\n` +
-      `Vehicle: ${d.vehicle || "N/A"}\n` +
-      `Selected Services:\n${lines}\n` +
-      `TOTAL: AED ${money(total)}\n` +
-      `Notes: ${d.notes || "N/A"}`;
-
-    this.href = whatsappLink(message);
-
-  });
-
-}
-
-// SEND FORM DETAILS TO PERKS WHATSAPP
-function sendToPerksWhatsApp(form, formType) {
-
-    const formData = new FormData(form);
-
-    let message = `PERKS CAR WASH & DETAILING
-${formType}
-
-`;
-
-    formData.forEach((value, key) => {
-
-        if (key.startsWith("_")) return;
-
-        if (typeof value === "string" && value.trim() !== "") {
-            message += `${key}: ${value}\n`;
-        }
-
+    document.querySelector("#printQuote")?.addEventListener("click", () => {
+        window.print();
     });
 
-    message += `
+    /* Send quotation through email */
 
-Thank you for choosing PERKS!`;
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
 
-    const whatsappURL =
-        `https://wa.me/${PERKS_WHATSAPP}?text=${encodeURIComponent(message)}`;
+        update();
 
-    window.open(whatsappURL, "_blank");
+        const items = selected();
 
+        if (!items.length) {
+            alert("Please select at least one service.");
+            return;
+        }
+
+        if (!form.reportValidity()) return;
+
+        HTMLFormElement.prototype.submit.call(form);
+    });
+
+    /* Send quotation through WhatsApp */
+
+    document.querySelector("#quoteWhatsApp")?.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        if (!form.reportValidity()) return;
+
+        const d = Object.fromEntries(
+            new FormData(form).entries()
+        );
+
+        const items = selected();
+
+        if (!items.length) {
+            alert("Please select at least one service.");
+            return;
+        }
+
+        const total = items.reduce(
+            (sum, item) => sum + item.price, 0
+        );
+
+        const lines = items.map(item =>
+            `${item.name}: AED ${money(item.price)}`
+        ).join("\n");
+
+        const message =
+`*PERKS CAR WASH & DETAILING*
+*NEW QUOTATION REQUEST*
+
+*Customer Details*
+Name: ${d.name}
+Phone: ${d.phone}
+Email: ${d.email || "N/A"}
+Vehicle: ${d.vehicle || "N/A"}
+
+*Selected Services*
+${lines}
+
+*TOTAL: AED ${money(total)}*
+
+Additional Notes:
+${d.notes || "N/A"}
+
+Thank you for choosing PERKS!
+Drive Clean. Drive Fresh. Drive PERKS.`;
+
+        openWhatsApp(message);
+    });
 }
 
-document.addEventListener("DOMContentLoaded",()=>{initSlides();initBooking();initQuotation()});
+/* ================= INITIALIZE WEBSITE ================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    initSlides();
+    initBooking();
+    initQuotation();
+});
