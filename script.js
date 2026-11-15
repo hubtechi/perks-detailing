@@ -8,7 +8,7 @@
 ============================================================= */
 const PERKS_CONFIG = {
   companyEmail: "YOUR_COMPANY_EMAIL@example.com",
-  whatsappNumber: "971XXXXXXXXX", // e.g. 971501234567; no + or spaces
+  whatsappNumber: "256781519693", // e.g. 971501234567; no + or spaces
   emailJsPublicKey: "YOUR_EMAILJS_PUBLIC_KEY",
   emailJsServiceId: "YOUR_EMAILJS_SERVICE_ID",
   bookingTemplateId: "YOUR_BOOKING_TEMPLATE_ID",
@@ -204,5 +204,35 @@ function initQuotation(){
 
 }
 
+// SEND FORM DETAILS TO PERKS WHATSAPP
+function sendToPerksWhatsApp(form, formType) {
+
+    const formData = new FormData(form);
+
+    let message = `PERKS CAR WASH & DETAILING
+${formType}
+
+`;
+
+    formData.forEach((value, key) => {
+
+        if (key.startsWith("_")) return;
+
+        if (typeof value === "string" && value.trim() !== "") {
+            message += `${key}: ${value}\n`;
+        }
+
+    });
+
+    message += `
+
+Thank you for choosing PERKS!`;
+
+    const whatsappURL =
+        `https://wa.me/${PERKS_WHATSAPP}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+
+}
 
 document.addEventListener("DOMContentLoaded",()=>{initSlides();initBooking();initQuotation()});
