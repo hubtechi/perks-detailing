@@ -36,7 +36,17 @@
 <div class="field"><label for="date">Preferred date *</label><input id="date" name="date" type="date" required></div>
 <div class="field"><label for="time">Preferred time *</label><select id="time" name="time" required><option value="">Choose a time</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
 <div class="field full"><label for="message">Additional details</label><textarea id="message" name="message" placeholder="Tell us anything else we should know about your vehicle or requested service."></textarea></div>
-</div><div class="notice">Submitting this form sends an appointment request. Your appointment is not confirmed until PERKS contacts you.</div><button type="submit">Send Booking Request →</button><div class="success" id="bookingStatus" role="status"></div><a id="bookingWhatsApp" class="btn secondary" style="display:none;margin-top:12px" target="_blank" rel="noopener">Send booking through WhatsApp</a></form>
+</div><div class="notice">Submitting this form sends an appointment request. Your appointment is not confirmed until PERKS contacts you.</div><button type="submit">Send Booking Request →</button>
+
+<button type="button"
+        class="btn secondary"
+        id="sendBookingWhatsApp"
+        style="margin-top:12px">
+    <i class="fa-brands fa-whatsapp"></i>
+    Send Booking through WhatsApp
+</button>
+
+<div class="success" id="bookingStatus" role="status"></div></form>
 <aside class="panel"><h2>What happens next?</h2><ul class="checks"><li>We receive your appointment request.</li><li>Our team checks the requested date and time.</li><li>We contact you to confirm your booking.</li></ul><p class="hint">For urgent enquiries, use the WhatsApp contact button at the top of this page.</p><br><a class="btn secondary" href="quotation.html">Need a price first? Get a quotation</a></aside></div></main>
 <footer id="contact"><div class="container footer-row"><span>© 2026 PERKS Car Wash and Detailing L.L.C. All rights reserved.</span><span>Premium car care • Dubai, UAE</span><span>Drive Clean. Drive Fresh. Drive PERKS.</span></div></footer>
 
@@ -59,5 +69,63 @@
 </a>
   
 <script src="script.js?v=3"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const bookingForm = document.getElementById("bookingForm");
+    const whatsappButton = document.getElementById("sendBookingWhatsApp");
+
+    // Replace with the official PERKS company WhatsApp number
+    const PERKS_WHATSAPP = "256781519693";
+
+    whatsappButton.addEventListener("click", function () {
+
+        // Check that required fields are completed
+        if (!bookingForm.reportValidity()) {
+            return;
+        }
+
+        const data = new FormData(bookingForm);
+
+        let message = `*PERKS CAR WASH & DETAILING*
+*NEW APPOINTMENT BOOKING REQUEST*
+
+`;
+
+        const labels = {
+            name: "Customer Name",
+            phone: "Phone Number",
+            email: "Email Address",
+            vehicle: "Vehicle Make and Model",
+            service: "Service Required",
+            date: "Preferred Date",
+            time: "Preferred Time",
+            message: "Additional Details"
+        };
+
+        for (const [key, value] of data.entries()) {
+
+            if (labels[key] && String(value).trim() !== "") {
+                message += `*${labels[key]}:* ${value}\n`;
+            }
+
+        }
+
+        message += `
+Thank you for choosing PERKS!
+Drive Clean. Drive Fresh. Drive PERKS.`;
+
+        const whatsappURL =
+            `https://wa.me/${PERKS_WHATSAPP}?text=${encodeURIComponent(message)}`;
+
+        window.open(whatsappURL, "_blank");
+
+    });
+
+});
+</script>
+
+</body>
 </body></html>
 
