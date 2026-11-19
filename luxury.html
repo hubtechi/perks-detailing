@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the PERKS Luxury car detailing package in Dubai.">
+  <title>LUXURY Package | PERKS Car Wash &amp; Detailing L.L.C.</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root { --package-gold: #c9a45c; --package-dark: #090909; --package-panel: #151515; }
+    body { background: var(--package-dark); color: #f5f4f0; }
+    .package-hero {
+      min-height: 390px; display: flex; align-items: center;
+      background: linear-gradient(90deg, rgba(0,0,0,.88), rgba(0,0,0,.35)),
+                  url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1600&q=85') center/cover no-repeat;
+      padding: 70px 20px;
+    }
+    .package-hero-inner { width: min(1100px, 100%); margin: auto; }
+    .package-kicker { color: var(--package-gold); text-transform: uppercase; letter-spacing: 3px; font-size: 12px; font-weight: 700; }
+    .package-hero h1 { font-size: clamp(38px, 7vw, 66px); margin: 14px 0 10px; letter-spacing: 2px; }
+    .package-hero p { max-width: 620px; line-height: 1.7; color: #e0e0e0; }
+    .price-panel { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 24px; }
+    .package-price { color: var(--package-gold); font-size: 30px; font-weight: 800; }
+    .price-note { color: #c5c5c5; font-size: 13px; }
+    .package-detail { padding-top: 55px; padding-bottom: 65px; }
+    .package-heading { text-align: center; margin-bottom: 30px; }
+    .package-heading h2 { font-size: clamp(26px, 4vw, 36px); margin-bottom: 10px; }
+    .package-heading h2 span { color: var(--package-gold); }
+    .package-heading p { color: #aaa; line-height: 1.6; }
+    .service-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .service-item { overflow: hidden; background: var(--package-panel); border: 1px solid #303030; border-radius: 10px; }
+    .service-item img { width: 100%; height: 220px; display: block; object-fit: cover; }
+    .service-copy { padding: 20px; }
+    .service-copy h3 { color: var(--package-gold); margin-bottom: 9px; font-size: 20px; }
+    .service-copy p { color: #c4c4c4; line-height: 1.7; font-size: 14px; }
+    .package-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+    .package-actions .btn { min-width: 190px; text-align: center; }
+    .package-back { display: block; text-align: center; margin-top: 25px; color: var(--package-gold); text-decoration: none; }
+    .package-back:hover { text-decoration: underline; }
+    @media (max-width: 700px) {
+      .service-list { grid-template-columns: 1fr; }
+      .package-hero { min-height: 340px; }
+      .service-item img { height: 210px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="perks-logo.png" alt="PERKS Car Wash and Detailing LLC">
+    </a>
+    <button class="menu" onclick="navToggle()" aria-label="Open menu">☰</button>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#packages">Packages</a>
+      <a href="services.html">Book a Service</a>
+      <a href="quotation.html">Prices &amp; Quotation</a>
+      <a href="index.html#about">About Us</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="btn whatsapp-btn" href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener">
+      <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="package-hero">
+    <div class="package-hero-inner">
+      <span class="package-kicker">PERKS Car Wash &amp; Detailing</span>
+      <h1>LUXURY PACKAGE</h1>
+      <p>Our most comprehensive package, combining interior and exterior detailing with polishing and ceramic coating.</p>
+      <div class="price-panel">
+        <span class="package-price">AED 50</span>
+        <span class="price-note">Current listed package price · Confirm final price when booking</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container package-detail">
+    <div class="package-heading">
+      <h2>What's <span>Included</span></h2>
+      <p>Explore the services included in the Luxury package.</p>
+    </div>
+
+    <div class="service-list">
+      
+        <article class="service-item">
+          <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=1000&q=85" alt="Interior Detail" loading="lazy">
+          <div class="service-copy">
+            <h3>Interior Detail</h3>
+            <p>A careful clean of the vehicle's interior surfaces to help keep the cabin fresh and presentable.</p>
+          </div>
+        </article>
+        <article class="service-item">
+          <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1000&q=85" alt="Exterior Detail" loading="lazy">
+          <div class="service-copy">
+            <h3>Exterior Detail</h3>
+            <p>An exterior clean focused on refreshing the vehicle's appearance and removing everyday dirt.</p>
+          </div>
+        </article>
+        <article class="service-item">
+          <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1000&q=85" alt="Engine Bay Wash" loading="lazy">
+          <div class="service-copy">
+            <h3>Engine Bay Wash</h3>
+            <p>A careful engine-bay clean to remove visible dust and grime from accessible areas.</p>
+          </div>
+        </article>
+        <article class="service-item">
+          <img src="car-polishing.png" alt="Polishing" loading="lazy">
+          <div class="service-copy">
+            <h3>Polishing</h3>
+            <p>A paint-polishing treatment to help refine the vehicle's appearance and enhance gloss. Results depend on paint condition.</p>
+          </div>
+        </article>
+        <article class="service-item">
+          <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1000&q=85" alt="Ceramic Coating" loading="lazy">
+          <div class="service-copy">
+            <h3>Ceramic Coating</h3>
+            <p>A protective coating applied to suitable exterior surfaces to support easier maintenance and lasting gloss. Preparation and coating options should be confirmed with PERKS.</p>
+          </div>
+        </article>
+    </div>
+
+    <div class="package-actions">
+      <a class="btn" href="services.html">Book Appointment →</a>
+      <a class="btn secondary" href="quotation.html">Request Quotation →</a>
+    </div>
+    <a class="package-back" href="index.html#packages">← Back to all packages</a>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="container footer-row">
+    <span>© 2026 PERKS Car Wash and Detailing L.L.C. All rights reserved.</span>
+    <span>Premium car care • Dubai, UAE</span>
+    <span>Drive Clean. Drive Fresh. Drive PERKS.</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/256781519693" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L4 20l1.2-4A8.5 8.5 0 1 1 20.5 11.5Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M9 8.5c.2-.4.4-.5.7-.5h.4c.2 0 .3.1.4.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.6c.2-.2.4-.2.6-.1l1.8.8c.3.1.4.3.4.5 0 .3-.2 1.1-.7 1.4-.5.4-1.1.5-1.7.3-1-.3-2.2-.9-3.4-2.1-1.2-1.2-1.8-2.4-2.1-3.4-.2-.6-.1-1.2.3-1.7Z" fill="white"/>
+  </svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
