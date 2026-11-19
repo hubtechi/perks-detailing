@@ -832,3 +832,67 @@ textarea:focus {
         height: 230px;
     }
    }
+
+
+/* ================= OUR SERVICES ================= */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.service-card {
+    background: #111;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 12px;
+    padding: 30px 24px;
+    text-align: center;
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-7px);
+    border-color: #d4af37;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.12);
+}
+
+.service-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.12);
+    color: #d4af37;
+    font-size: 27px;
+}
+
+.service-card h3 {
+    color: #d4af37;
+    margin-bottom: 12px;
+    font-size: 19px;
+}
+
+.service-card p {
+    color: #ccc;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
