@@ -896,3 +896,24 @@ textarea:focus {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* IMAGE-BASED SERVICES */
+.services-grid .service-card {
+    overflow: hidden;
+}
+
+.services-grid .service-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.services-grid .service-card .package-content {
+    padding: 22px;
+}
+
+.services-grid .service-card h3 {
+    margin-bottom: 12px;
+}
