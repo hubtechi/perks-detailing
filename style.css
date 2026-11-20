@@ -73,6 +73,7 @@ button:hover,
     border: 1px solid var(--gold);
 }
 
+
 .btn.dark {
     background: #242424;
     color: white;
