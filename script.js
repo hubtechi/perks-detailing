@@ -3,7 +3,7 @@
 
 const PERKS_CONFIG = {
     companyEmail: "YOUR_COMPANY_EMAIL@example.com",
-    whatsappNumber: "256781519693",
+    whatsappNumber: "+971586778562",
 
     emailJsPublicKey: "YOUR_EMAILJS_PUBLIC_KEY",
     emailJsServiceId: "YOUR_EMAILJS_SERVICE_ID",
