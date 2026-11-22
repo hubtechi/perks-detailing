@@ -353,21 +353,65 @@ alt="Fleet Vehicle Care">
     </section>
 
 
-    <!-- CALL TO ACTION -->
-    <section class="section container">
+    <!-- BOOKING OPTIONS -->
+<section class="section container" id="booking">
 
-        <div class="cta">
+    <div class="cta booking-cta">
 
-            <div>
-                <h3>Request a Quotation or Book an Appointment</h3>
-                <p>Let us take care of your car.</p>
-            </div>
+        <div>
+            <h3>Request a Quotation or Book an Appointment</h3>
+            <p>Let us take care of your car.</p>
+        </div>
 
-            <div class="actions">
+        <div class="actions">
 
-                <a class="btn" href="quotation.html">
-                    Get a Quotation
-                </a>
+            <a class="btn" href="quotation.html">
+                Get a Quotation
+            </a>
+
+            <a class="btn secondary" href="services.html">
+                Book via PERKS
+            </a>
+
+            <button class="btn zoho-btn" onclick="openZohoBooking()">
+                Book via Zoho
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ZOHO BOOKING MODAL -->
+<div id="zohoBookingModal" class="zoho-modal">
+
+    <div class="zoho-modal-content">
+
+        <button class="zoho-close" onclick="closeZohoBooking()"
+                aria-label="Close booking window">
+            &times;
+        </button>
+
+        <h2>Book an Appointment</h2>
+
+        <p>Schedule your car care service with PERKS.</p>
+
+        <div class="zoho-iframe-container">
+
+            <!-- REPLACE THIS URL WITH YOUR ZOHO EMBED URL -->
+            <iframe
+                src="YOUR_ZOHO_BOOKING_EMBED_URL"
+                title="PERKS Online Booking"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+</div>
 
                 <a class="btn secondary" href="services.html">
                     Book Appointment
