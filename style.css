@@ -918,3 +918,89 @@ textarea:focus {
 .services-grid .service-card h3 {
     margin-bottom: 12px;
 }
+
+/* ZOHO BOOKING BUTTON */
+.zoho-btn {
+    background: #c9a227;
+    color: #111;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+/* BOOKING MODAL */
+.zoho-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.zoho-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zoho-modal-content {
+    background: #111;
+    color: #fff;
+    width: 100%;
+    max-width: 1000px;
+    padding: 25px;
+    border: 1px solid #c9a227;
+    border-radius: 12px;
+    position: relative;
+}
+
+.zoho-modal-content h2 {
+    color: #c9a227;
+    margin-top: 0;
+}
+
+.zoho-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    color: #c9a227;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.zoho-iframe-container {
+    width: 100%;
+    height: 700px;
+    margin-top: 20px;
+}
+
+.zoho-iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+    border-radius: 8px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .zoho-modal {
+        padding: 10px;
+        align-items: flex-start;
+    }
+
+    .zoho-modal-content {
+        padding: 20px 12px;
+        margin-top: 15px;
+    }
+
+    .zoho-iframe-container {
+        height: 750px;
+    }
+
+   }
