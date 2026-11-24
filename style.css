@@ -1138,3 +1138,11 @@ textarea:focus {
         min-width: 50px !important;
     }
 }
+.hero .btn {
+    display: block;
+    width: fit-content;
+}
+
+.hero .btn + .btn {
+    margin-top: 15px;
+}
