@@ -1010,3 +1010,18 @@ textarea:focus {
     border-radius: 50%;
     object-fit: cover;
 }
+
+
+.package-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.package-actions .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
