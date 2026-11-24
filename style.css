@@ -1044,7 +1044,10 @@ textarea:focus {
     }
 }
 
-/* PERKS FLOATING WHATSAPP - REFINED DESIGN */
+
+/* =========================================
+   PERKS FLOATING WHATSAPP INQUIRIES
+========================================= */
 
 .whatsapp-float {
     position: fixed !important;
@@ -1055,7 +1058,6 @@ textarea:focus {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
     gap: 10px !important;
 
     width: auto !important;
@@ -1071,9 +1073,11 @@ textarea:focus {
 }
 
 .whatsapp-label {
-    display: inline-block !important;
-    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
 
+    white-space: nowrap !important;
     background: #171717 !important;
     color: #D4AF37 !important;
 
@@ -1082,7 +1086,7 @@ textarea:focus {
 
     padding: 11px 16px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.4px;
 
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -1101,9 +1105,8 @@ textarea:focus {
     color: white !important;
 
     border-radius: 50% !important;
-    font-size: 30px;
-
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+
     transition: transform 0.3s ease;
 }
 
@@ -1116,6 +1119,7 @@ textarea:focus {
     color: #111 !important;
 }
 
+/* MOBILE */
 @media (max-width: 600px) {
     .whatsapp-float {
         right: 15px !important;
@@ -1132,6 +1136,5 @@ textarea:focus {
         width: 50px !important;
         height: 50px !important;
         min-width: 50px !important;
-        font-size: 27px;
     }
 }
