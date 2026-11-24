@@ -1,0 +1,495 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Book a Package | PERKS Car Wash & Detailing</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <div class="container nav">
+
+        <a class="brand" href="index.html">
+            <img src="perks-logo.png"
+                 alt="PERKS Car Wash and Detailing LLC">
+        </a>
+
+        <button class="menu"
+                onclick="navToggle()"
+                aria-label="Open menu">
+            ☰
+        </button>
+
+        <nav class="navlinks">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Our Services</a>
+            <a href="index.html#packages">Our Packages</a>
+            <a href="quotation.html">Prices & Quotation</a>
+            <a href="index.html#about">About Us</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- PAGE HERO -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <div class="eyebrow">PERKS Customer Booking</div>
+
+        <h1>
+            Book Your <span class="gold">Package</span>
+        </h1>
+
+        <p>
+            Choose your preferred PERKS detailing package.
+            Complete the form below and our team will contact
+            you to confirm your appointment.
+        </p>
+
+    </div>
+
+</section>
+
+
+<main class="section container">
+
+    <div class="form-layout">
+
+        <!-- PACKAGE BOOKING FORM -->
+
+        <form class="panel"
+              id="packageBookingForm"
+              action="https://formsubmit.co/lahabi323@gmail.com"
+              method="POST">
+
+            <input type="hidden"
+                   name="_subject"
+                   value="New PERKS Package Booking Request">
+
+            <input type="hidden"
+                   name="_template"
+                   value="table">
+
+            <input type="hidden"
+                   name="_captcha"
+                   value="true">
+
+            <input type="hidden"
+                   name="_next"
+                   value="https://hubtechi.github.io/perks-detailing/thank-you.html">
+
+
+            <h2>Package Booking Details</h2>
+
+            <div class="field-grid">
+
+                <!-- CUSTOMER DETAILS -->
+
+                <div class="field">
+                    <label for="name">Full Name *</label>
+
+                    <input id="name"
+                           name="name"
+                           required
+                           placeholder="Your full name">
+                </div>
+
+
+                <div class="field">
+                    <label for="phone">Phone Number *</label>
+
+                    <input id="phone"
+                           name="phone"
+                           type="tel"
+                           required
+                           placeholder="+971...">
+                </div>
+
+
+                <div class="field">
+                    <label for="email">Email Address *</label>
+
+                    <input id="email"
+                           name="email"
+                           type="email"
+                           required
+                           placeholder="you@example.com">
+                </div>
+
+
+                <div class="field">
+                    <label for="vehicle">Vehicle Make and Model *</label>
+
+                    <input id="vehicle"
+                           name="vehicle"
+                           required
+                           placeholder="e.g. Porsche 911">
+                </div>
+
+
+                <!-- PACKAGE SELECTION -->
+
+                <div class="field full">
+
+                    <label for="package">
+                        Select Your Package *
+                    </label>
+
+                    <select id="package"
+                            name="package"
+                            required>
+
+                        <option value="">Choose a package</option>
+
+                        <option value="Signature Refresh Package">
+                            Signature Refresh Package
+                        </option>
+
+                        <option value="The Ultimate Package">
+                            The Ultimate Package
+                        </option>
+
+                        <option value="The Luxury Package">
+                            The Luxury Package
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- APPOINTMENT DATE -->
+
+                <div class="field">
+
+                    <label for="date">Preferred Date *</label>
+
+                    <input id="date"
+                           name="date"
+                           type="date"
+                           required>
+
+                </div>
+
+
+                <!-- APPOINTMENT TIME -->
+
+                <div class="field">
+
+                    <label for="time">Preferred Time *</label>
+
+                    <select id="time"
+                            name="time"
+                            required>
+
+                        <option value="">Choose a time</option>
+
+                        <option>9:00 AM</option>
+                        <option>10:00 AM</option>
+                        <option>11:00 AM</option>
+                        <option>12:00 PM</option>
+                        <option>1:00 PM</option>
+                        <option>2:00 PM</option>
+                        <option>3:00 PM</option>
+                        <option>4:00 PM</option>
+                        <option>5:00 PM</option>
+                        <option>6:00 PM</option>
+                        <option>7:00 PM</option>
+                        <option>8:00 PM</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ADDITIONAL DETAILS -->
+
+                <div class="field full">
+
+                    <label for="message">
+                        Additional Details
+                    </label>
+
+                    <textarea id="message"
+                              name="message"
+                              placeholder="Tell us anything else we should know about your vehicle or package requirements."></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="notice">
+
+                Submitting this form sends a package booking request.
+                Your appointment is not confirmed until PERKS contacts you.
+
+            </div>
+
+
+            <button type="submit">
+                Send Package Booking Request →
+            </button>
+
+
+            <button type="button"
+                    class="btn secondary"
+                    id="sendPackageWhatsApp"
+                    style="margin-top:12px">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                Send Booking through WhatsApp
+
+            </button>
+
+
+            <div class="success"
+                 id="packageBookingStatus"
+                 role="status">
+            </div>
+
+        </form>
+
+
+        <!-- BOOKING INFORMATION -->
+
+        <aside class="panel">
+
+            <h2>Our Packages</h2>
+
+            <ul class="checks">
+
+                <li>
+                    <strong>Signature Refresh Package</strong><br>
+                    Essential Vehicle Care
+                </li>
+
+                <li>
+                    <strong>The Ultimate Package</strong><br>
+                    Enhanced Vehicle Care
+                </li>
+
+                <li>
+                    <strong>The Luxury Package</strong><br>
+                    Ultimate Vehicle Protection
+                </li>
+
+            </ul>
+
+
+            <br>
+
+            <h2>What Happens Next?</h2>
+
+            <ul class="checks">
+
+                <li>We receive your package booking request.</li>
+
+                <li>Our team checks the requested date and time.</li>
+
+                <li>We contact you to confirm your booking.</li>
+
+            </ul>
+
+
+            <p class="hint">
+                For urgent enquiries, contact our team directly
+                through WhatsApp.
+            </p>
+
+
+            <br>
+
+            <a class="btn secondary"
+               href="quotation.html">
+
+                Need a price first? Get a quotation
+
+            </a>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+    <div class="container footer-row">
+
+        <span>
+            © 2026 PERKS Car Wash and Detailing L.L.C.
+            All rights reserved.
+        </span>
+
+        <span>
+            Premium car care • Dubai, UAE
+        </span>
+
+        <span>
+            Drive Clean. Drive Fresh. Drive PERKS.
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- FLOATING WHATSAPP BUTTON -->
+
+<a href="https://wa.me/971586778562"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Contact PERKS on WhatsApp">
+
+    <span class="whatsapp-label">
+        For Inquiries
+    </span>
+
+    <span class="whatsapp-icon">
+
+        <svg viewBox="0 0 24 24"
+             width="30"
+             height="30"
+             fill="white"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L4 20l1.2-4A8.5 8.5 0 1 1 20.5 11.5Z"
+                  stroke="white"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                  fill="none"/>
+
+            <path d="M9 8.5c.2-.4.4-.5.7-.5h.4c.2 0 .3.1.4.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.6c.2-.2.4-.2.6-.1l1.8.8c.3.1.4.3.4.5 0 .3-.2 1.1-.7 1.4-.5.4-1.1.5-1.7.3-1-.3-2.2-.9-3.4-2.1-1.2-1.2-1.8-2.4-2.1-3.4-.2-.6-.1-1.2.3-1.7Z"
+                  fill="white"/>
+
+        </svg>
+
+    </span>
+
+</a>
+
+
+<script src="script.js?v=3"></script>
+
+
+<!-- PACKAGE WHATSAPP BOOKING -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const bookingForm =
+        document.getElementById("packageBookingForm");
+
+    const whatsappButton =
+        document.getElementById("sendPackageWhatsApp");
+
+
+    const PERKS_WHATSAPP = "971586778562";
+
+
+    // Prevent customers from selecting past dates
+
+    const dateInput = document.getElementById("date");
+
+    const today = new Date();
+
+    const localToday = new Date(
+        today.getTime() - today.getTimezoneOffset() * 60000
+    ).toISOString().split("T")[0];
+
+    dateInput.min = localToday;
+
+
+    // WhatsApp booking
+
+    whatsappButton.addEventListener("click", function () {
+
+        if (!bookingForm.reportValidity()) {
+            return;
+        }
+
+
+        const data = new FormData(bookingForm);
+
+
+        let message = `*PERKS CAR WASH & DETAILING*
+*NEW PACKAGE BOOKING REQUEST*
+
+`;
+
+
+        const labels = {
+
+            name: "Customer Name",
+
+            phone: "Phone Number",
+
+            email: "Email Address",
+
+            vehicle: "Vehicle Make and Model",
+
+            package: "Selected Package",
+
+            date: "Preferred Date",
+
+            time: "Preferred Time",
+
+            message: "Additional Details"
+
+        };
+
+
+        for (const [key, value] of data.entries()) {
+
+            if (labels[key] && String(value).trim() !== "") {
+
+                message += `*${labels[key]}:* ${value}\n`;
+
+            }
+
+        }
+
+
+        message += `
+
+Thank you for choosing PERKS!
+
+Drive Clean. Drive Fresh. Drive PERKS.`;
+
+
+        const whatsappURL =
+            `https://wa.me/${PERKS_WHATSAPP}?text=${encodeURIComponent(message)}`;
+
+
+        window.open(whatsappURL, "_blank");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+```
