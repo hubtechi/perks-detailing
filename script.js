@@ -257,28 +257,44 @@ document.addEventListener("DOMContentLoaded", () => {
     initQuotation();
 });
 
+
 // OPEN ZOHO BOOKING
 function openZohoBooking() {
-    document.getElementById("zohoBookingModal").classList.add("active");
+    const modal = document.getElementById("zohoBookingModal");
+
+    if (!modal) return;
+
+    modal.classList.add("active");
     document.body.style.overflow = "hidden";
 }
 
 // CLOSE ZOHO BOOKING
 function closeZohoBooking() {
-    document.getElementById("zohoBookingModal").classList.remove("active");
+    const modal = document.getElementById("zohoBookingModal");
+
+    if (!modal) return;
+
+    modal.classList.remove("active");
     document.body.style.overflow = "";
 }
 
-// CLOSE WHEN CLICKING OUTSIDE
-document.getElementById("zohoBookingModal").addEventListener("click", function(event) {
-    if (event.target === this) {
-        closeZohoBooking();
-    }
-});
+// ZOHO MODAL EVENTS
+document.addEventListener("DOMContentLoaded", function () {
 
-// CLOSE WITH ESCAPE
-document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-        closeZohoBooking();
+    const zohoModal = document.getElementById("zohoBookingModal");
+
+    if (zohoModal) {
+        zohoModal.addEventListener("click", function(event) {
+            if (event.target === zohoModal) {
+                closeZohoBooking();
+            }
+        });
     }
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            closeZohoBooking();
+        }
+    });
+
 });
