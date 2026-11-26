@@ -143,8 +143,10 @@
             <div class="package-content">
                 <h3>Premium Wash</h3>
                 <p>Professional exterior wash using premium products.</p>
-                <a href="#booking" class="btn package-btn service-book-link" aria-label="Book Mobile Car Wash">Book This Service →</a>
-            </div>
+                <a href="#" class="btn package-btn service-book-link"
+   data-service="Premium Wash">
+    Book This Service →
+</a>
         </article>
 
         <!-- INTERIOR DETAILING -->
@@ -444,6 +446,46 @@ alt="Fleet Vehicle Care">
 
 </main>
 
+    <!-- SERVICE BOOKING MODAL -->
+<div id="serviceBookingModal" class="service-booking-modal">
+
+    <div class="service-booking-modal-content">
+
+        <button class="service-booking-close"
+                onclick="closeServiceBooking()"
+                aria-label="Close popup">
+            &times;
+        </button>
+
+        <h2>Book Your Service</h2>
+
+        <p id="selectedServiceName"></p>
+
+        <p class="booking-choice-text">
+            Choose your preferred booking method.
+        </p>
+
+        <div class="service-booking-options">
+
+            <a id="perksBookingLink"
+               href="services.html"
+               class="btn service-booking-option">
+                Book via PERKS →
+            </a>
+
+            <a id="zohoBookingLink"
+               href="https://perkscarwashanddetailingllc.zohobookings.com/perkscarwashanddetailingllc/#/perkscarwashanddetailingllc"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn zoho-booking-option">
+                Book via Zoho →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
 
 <!-- FOOTER -->
 <footer id="contact">
