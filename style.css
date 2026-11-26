@@ -1147,3 +1147,128 @@ textarea:focus {
 .hero-content .btn:last-child {
     margin-bottom: 0;
 }
+
+/* =========================================
+   SERVICE BOOKING POPUP
+========================================= */
+
+.service-booking-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.service-booking-modal.active {
+    display: flex;
+}
+
+.service-booking-modal-content {
+    background: #111;
+    border: 1px solid var(--gold);
+
+    width: 100%;
+    max-width: 450px;
+
+    padding: 35px 25px;
+    border-radius: 15px;
+
+    text-align: center;
+    position: relative;
+
+    box-shadow: 0 0 30px rgba(232, 173, 40, 0.15);
+}
+
+.service-booking-modal-content h2 {
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.service-booking-modal-content p {
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+#selectedServiceName {
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.booking-choice-text {
+    font-size: 14px;
+    color: #b9b9b9;
+}
+
+.service-booking-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.service-booking-option,
+.zoho-booking-option {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.service-booking-option {
+    background: var(--gold);
+    color: #17130a;
+}
+
+.service-booking-option:hover {
+    background: var(--gold2);
+}
+
+.zoho-booking-option {
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: transparent;
+}
+
+.zoho-booking-option:hover {
+    background: var(--gold);
+    color: #17130a;
+}
+
+.service-booking-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+
+    background: transparent;
+    border: none;
+
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.service-booking-close:hover {
+    color: var(--gold);
+}
+
+/* Mobile adjustment */
+
+@media (max-width: 480px) {
+
+    .service-booking-modal-content {
+        padding: 30px 20px;
+    }
+
+}
