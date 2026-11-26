@@ -298,3 +298,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+/* =========================================
+   SERVICE BOOKING POPUP
+========================================= */
+
+const serviceBookingModal = document.getElementById("serviceBookingModal");
+const selectedServiceName = document.getElementById("selectedServiceName");
+const perksBookingLink = document.getElementById("perksBookingLink");
+
+document.querySelectorAll(".service-book-link").forEach(link => {
+
+    link.addEventListener("click", function(e) {
+
+        e.preventDefault();
+
+        const serviceName = this.getAttribute("data-service");
+
+        selectedServiceName.textContent = serviceName;
+
+        // Pass selected service to PERKS booking page
+        perksBookingLink.href = "services.html?service=" + encodeURIComponent(serviceName);
+
+        serviceBookingModal.classList.add("active");
+
+    });
+
+});
+
+
+function closeServiceBooking() {
+    serviceBookingModal.classList.remove("active");
+}
+
+
+// Close when clicking outside popup
+
+serviceBookingModal.addEventListener("click", function(e) {
+
+    if (e.target === serviceBookingModal) {
+        closeServiceBooking();
+    }
+
+});
+
+
+// Close using Escape key
+
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "Escape") {
+        closeServiceBooking();
+    }
+
+});
