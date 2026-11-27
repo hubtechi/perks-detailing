@@ -299,56 +299,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-/* =========================================
-   SERVICE BOOKING POPUP
+/* ========================================
+SERVICE BOOKING POPUP
 ========================================= */
 
 const serviceBookingModal = document.getElementById("serviceBookingModal");
 const selectedServiceName = document.getElementById("selectedServiceName");
 const perksBookingLink = document.getElementById("perksBookingLink");
+const zohoBookingLink = document.getElementById("zohoBookingLink");
 
 document.querySelectorAll(".service-book-link").forEach(link => {
 
-    link.addEventListener("click", function(e) {
+link.addEventListener("click", function(e) {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        const serviceName = this.getAttribute("data-service");
+    const serviceName = this.getAttribute("data-service");
 
-        selectedServiceName.textContent = serviceName;
+    selectedServiceName.textContent = serviceName;
 
-        // Pass selected service to PERKS booking page
-        perksBookingLink.href = "services.html?service=" + encodeURIComponent(serviceName);
+    // Pass selected service to PERKS booking page
+    perksBookingLink.href = "services.html?service=" + encodeURIComponent(serviceName);
 
-        serviceBookingModal.classList.add("active");
+    // Fleet Vehicle Care: show PERKS booking only
+    if (serviceName === "Fleet Vehicle Care") {
+        zohoBookingLink.style.display = "none";
+    } else {
+        zohoBookingLink.style.display = "inline-block";
+    }
 
-    });
+    serviceBookingModal.classList.add("active");
 
 });
 
+});
 
 function closeServiceBooking() {
-    serviceBookingModal.classList.remove("active");
+serviceBookingModal.classList.remove("active");
 }
-
 
 // Close when clicking outside popup
 
 serviceBookingModal.addEventListener("click", function(e) {
 
-    if (e.target === serviceBookingModal) {
-        closeServiceBooking();
-    }
+if (e.target === serviceBookingModal) {
+    closeServiceBooking();
+}
 
 });
-
 
 // Close using Escape key
 
 document.addEventListener("keydown", function(e) {
 
-    if (e.key === "Escape") {
-        closeServiceBooking();
-    }
+if (e.key === "Escape") {
+    closeServiceBooking();
+}
 
 });
