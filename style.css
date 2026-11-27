@@ -1620,13 +1620,17 @@ textarea:focus {
 ========================================= */
 
 .floating-call {
-    position: fixed;
-    right: 22px;
-    bottom: 90px;
+.floating-call {
+    position: fixed !important;
+    right: 25px !important;
+    bottom: 100px !important;
+    top: auto !important;
+
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 14px 20px;
+
     background: var(--gold);
     color: #000;
     border-radius: 50px;
@@ -1634,7 +1638,9 @@ textarea:focus {
     font-weight: 800;
     font-size: 14px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-    z-index: 9999;
+
+    z-index: 100000 !important;
+
     transition: transform 0.3s ease,
                 box-shadow 0.3s ease;
 }
