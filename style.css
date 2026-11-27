@@ -1620,68 +1620,22 @@ textarea:focus {
 ========================================= */
 
 .floating-call {
-.floating-call {
     position: fixed !important;
-    right: 25px !important;
+    right: 20px !important;
     bottom: 100px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 14px 20px !important;
+    background: var(--gold) !important;
+    color: #000 !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
+    z-index: 1000000 !important;
     top: auto !important;
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 20px;
-
-    background: var(--gold);
-    color: #000;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 14px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-
-    z-index: 100000 !important;
-
-    transition: transform 0.3s ease,
-                box-shadow 0.3s ease;
+    left: auto !important;
+    transform: none !important;
 }
-
-.floating-call:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(232, 173, 40, 0.35);
-}
-
-.floating-call svg {
-    flex-shrink: 0;
-}
-
-@media (max-width: 500px) {
-    .floating-call {
-        right: 16px;
-        bottom: 16px;
-        padding: 13px 17px;
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .floating-call {
-        position: fixed !important;
-        right: 20px !important;
-        bottom: 100px !important;
-        left: auto !important;
-        top: auto !important;
-        transform: none !important;
-        z-index: 1000000 !important;
-    }
-
-    .whatsapp-float {
-        position: fixed !important;
-        right: 25px !important;
-        bottom: 25px !important;
-        left: auto !important;
-        top: auto !important;
-        z-index: 99999 !important;
-    }
-
-   }
