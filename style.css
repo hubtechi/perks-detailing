@@ -1640,16 +1640,3 @@ textarea:focus {
     transform: none !important;
 }
 
-/* LOGIMAC FOUR SERVICE BUTTONS - MAROON */
-.service-btn,
-.service-tab {
-    background-color: #800000;
-    color: #ffffff;
-    border: 1px solid #800000;
-}
-
-.service-btn:hover,
-.service-tab:hover {
-    background-color: #600000;
-    color: #ffffff;
-}
